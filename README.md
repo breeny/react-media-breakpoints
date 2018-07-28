@@ -23,7 +23,7 @@ or
 
 ### Pre-configured Example
 
-To use the pre-configured Breakpoints, just import and use the component. It will re-render when 
+To use the pre-configured Breakpoints, just import and use the component. It will re-render when the matchMedia listener matches the new breakpoint. 
 
 ```javascript
 //Import component
@@ -39,7 +39,7 @@ import Breakpoint from 'react-media-breakpoints'
 
 //It can also be used more generically with a render prop...
 <Breakpoint
-  render={(breakpoint) => (/* Conditionally render based on the render prop */)}
+  render={(breakpoint) => (/* Conditionally render based on the render prop. Called with desktop, tablet, mobile */)}
 />
 
 //...Or as a child function
@@ -75,6 +75,15 @@ configure([{
   customBp3={() => (/* bp3 */)}
 />
 
+<Breakpoint
+  render={(breakpoint) => (/* called with customBp1, customBp2, customBp3 etc. */)}
+/>
 ```
 
 Note that configurations are shared across the app - it is advised to set up once and re-use these configurations across the app.
+
+### Common Gotchas
+
+*Custom config overlaps/misses pixel ranges*
+In this scenario, `Breakpoint` will not call any render method - this is largely do to directly translating the config to media queries.
+
