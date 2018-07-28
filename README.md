@@ -1,9 +1,50 @@
 # react-media-breakpoints
 [![CircleCI](https://circleci.com/gh/breeny/react-media-breakpoints.svg?style=svg)](https://circleci.com/gh/breeny/react-media-breakpoints) [![Coverage Status](https://coveralls.io/repos/github/breeny/react-media-breakpoints/badge.svg?branch=master)](https://coveralls.io/github/breeny/react-media-breakpoints?branch=master) 
 
+Simple matchMedia based React component to conditionally render components based on breakpoints.
+
 ### TL;DR
 - :white_check_mark: No dependencies
 - :white_check_mark: Small profile (4kb)
 - :white_check_mark: Flexible API
 - :white_check_mark: Customizable breakpoints
+
+### Installation
+```
+  yarn add react-media-breakpoints
+```
+
+or
+
+```
+  npm install --save react-media-breakpoints
+```
+
+
+### Pre-configured Example
+
+To use the pre-configured Breakpoints, just import and use the component. It will re-render when 
+
+```javascript
+//Import component
+import Breakpoint from 'react-media-breakpoints'
+...
+
+//Use component based on breakpoints
+<Breakpoint 
+  desktop={() => (/* Render on desktop */)}
+  tablet={() => (/* Render on tablet */)}
+  mobile={() => (/* Render on mobile) */)}
+/>
+
+//It can also be used more generically with a render prop...
+<Breakpoint
+  render={(breakpoint) => (/* Conditionally render based on the render prop */)}
+/>
+
+//...Or as a child function
+<Breakpoint>
+  {breakpoint => (/* Conditionally render here too :) */)}
+</Breakpoint>
+```
 
