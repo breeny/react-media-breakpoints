@@ -85,5 +85,6 @@ Note that configurations are shared across the app - it is advised to set up onc
 ### Common Gotchas
 
 *Custom config overlaps/misses pixel ranges*
+
 In this scenario, `Breakpoint` will not call any render method - this is largely do to directly translating the config to media queries.
 
