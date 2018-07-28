@@ -1,0 +1,21 @@
+{
+  "name": "react-media-breakpoints",
+  "version": "0.1.0",
+  "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
+  "main": "index.js",
+  "module": "es/index.js",
+  "repository": "https://github.com/breeny/react-media-breakpoints.git",
+  "author": "Andrew Breen (Twitter: @breeny92)",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.4.2",
+    "nwb": "^0.21.5"
+  },
+  "peerDependencies": {
+    "react": "^16.4.1"
+  },
+  "scripts": {
+    "build": "nwb build",
+    "nwb": "nwb"
+  }
+}
