@@ -48,3 +48,33 @@ import Breakpoint from 'react-media-breakpoints'
 </Breakpoint>
 ```
 
+### Custom Configuration Example
+
+Breakpoints can also be configured app wide by importing the configure method at the top of your App.js(x)
+
+```javascript
+//App.js
+import { configure } from 'react-media-breakpoints';
+
+configure([{
+  name: 'customBp1',
+  minWidth: 1000,
+  maxWidth: 1100
+}, {
+  name: 'customBp2',
+  minWidth: 1101
+}, {
+  name: 'customBp3',
+  max_width: 999
+}]);
+
+//Elsewhere in your app
+<Breakpoint 
+  customBp1={() => (/* bp1 */)}
+  customBp2={() => (/* bp2 */)}
+  customBp3={() => (/* bp3 */)}
+/>
+
+```
+
+Note that configurations are shared across the app - it is advised to set up once and re-use these configurations across the app.
