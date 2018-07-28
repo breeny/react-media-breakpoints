@@ -51,7 +51,11 @@ class Breakpoint extends React.Component {
       return this.props.render(breakpoint.name);
     }
 
-    return this.props.children(breakpoint.name);
+    if (this.props.children) {
+      return this.props.children(breakpoint.name);
+    }
+
+    return null;
   }
 }
 

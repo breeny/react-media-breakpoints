@@ -11,7 +11,12 @@ describe('Breakpoint Component', () => {
       width
     });
     window.matchMedia = mock;
+    return mock; 
   }
+
+  afterEach(() => {
+    window.matchMedia = undefined;
+  })
 
   describe('render', () => {
     it('uses named renders', () => {
@@ -38,7 +43,31 @@ describe('Breakpoint Component', () => {
     });
   });
 
-  describe('matches', () => {
-    
+  it('listens to breakpoint changes', () => {
+    const mock = setMatchMediaMock(320);
+    const renderMethod = jest.fn().mockReturnValue(null);
+    renderer.create(<Breakpoint render={renderMethod}/>);
+    renderMethod.mockReset();
+    renderMethod.mockReturnValue(null);
+
+    mock.setConfig({
+      width: 1920
+    });
+
+    expect(renderMethod).toBeCalledWith('desktop');
+  });
+
+  it('unmounts listeners', () => {
+    const remove = jest.fn();
+    window.matchMedia = () => ({
+      matches: false,
+      addListener: jest.fn(),
+      removeListener: remove
+    });
+
+    const bp = renderer.create(<Breakpoint />);
+    bp.unmount();
+
+    expect(remove).toBeCalled();
   });
 });
