@@ -65,7 +65,7 @@ configure([{
   minWidth: 1101
 }, {
   name: 'customBp3',
-  max_width: 999
+  maxWidth: 999
 }]);
 
 //Elsewhere in your app
