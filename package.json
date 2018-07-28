@@ -8,14 +8,30 @@
   "author": "Andrew Breen (Twitter: @breeny92)",
   "license": "MIT",
   "devDependencies": {
+    "babel-jest": "^23.4.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "coveralls": "^3.0.2",
     "jest": "^23.4.2",
-    "nwb": "^0.21.5"
+    "match-media-mock": "^0.1.0",
+    "nwb": "^0.21.5",
+    "react": "^16.4.1",
+    "react-test-renderer": "^16.4.1"
   },
   "peerDependencies": {
     "react": "^16.4.1"
   },
   "scripts": {
     "build": "nwb build",
-    "nwb": "nwb"
+    "test": "jest",
+    "test-ci": "jest --coverage --coverageReporters=text-lcov | coveralls"
+  },
+  "jest": {
+    "testURL": "http://localhost",
+    "collectCoverageFrom": [
+      "src/**/*.{js|jsx}"
+    ]
   }
 }
