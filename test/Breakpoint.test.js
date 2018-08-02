@@ -41,6 +41,13 @@ describe('Breakpoint Component', () => {
       expect(renderMethod).toBeCalled();
       expect(renderMethod).toBeCalledWith('mobile');
     });
+
+    it('handles if no render props provided at all', () => {
+      setMatchMediaMock(320);
+      expect(() => {
+        renderer.create(<Breakpoint />);
+      }).not.toThrow();
+    });
   });
 
   it('listens to breakpoint changes', () => {
@@ -55,6 +62,22 @@ describe('Breakpoint Component', () => {
     });
 
     expect(renderMethod).toBeCalledWith('desktop');
+  });
+
+  it('creates singular queries', () => {
+    setMatchMediaMock(999);
+    const query = '(min-width: 998px) and (max-width: 1000px)';
+    const renderMethod = jest.fn().mockReturnValue(null);
+    renderer.create(<Breakpoint render={renderMethod} query={query} />);
+    expect(renderMethod).toBeCalledWith('');
+  });
+
+  it('does not render if no match found', () => {
+    setMatchMediaMock(1000);
+    const query = '(min-width: 1001px)';
+    const renderMethod = jest.fn().mockReturnValue(null);
+    renderer.create(<Breakpoint render={renderMethod} query={query} />);
+    expect(renderMethod).not.toBeCalled();
   });
 
   it('unmounts listeners', () => {

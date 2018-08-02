@@ -48,6 +48,15 @@ import Breakpoint from 'react-media-breakpoints'
 </Breakpoint>
 ```
 
+By default, the pre-configuration is as follows:
+
+|name|minWidth|maxWidth|
+|----|:--------:|:--------:|
+|mobile| *none* | 767px |
+|tablet|768px|1023px|
+desktop|1024px| *none*
+
+
 ### Custom Configuration Example
 
 Breakpoints can also be configured app wide by importing the configure method at the top of your App.js(x)
@@ -82,7 +91,24 @@ configure([{
 
 Note that configurations are shared across the app - it is advised to set up once and re-use these configurations across the app.
 
-### Common Gotchas
+### Single Query Example
+
+Breakpoints can be used once off with a query for just the component instance. In this case, it will not use the configured breakpoints.
+
+```javascript
+import Breakpoint from 'react-media-breakpoints';
+
+<Breakpoint 
+  query="(min-width: 600px) and (max-width: 1200px)"
+  render={() => { /* Called if custom query is resolved */ }}
+/>
+
+<Breakpoint query="(min-width: 600px) and (max-width: 1200px)">
+  { () => { /* Called if custom query is resolved */ }}
+</Breakpoint>
+```
+
+### Common Gotchas & FAQs
 
 *Custom config overlaps/misses pixel ranges*
 
