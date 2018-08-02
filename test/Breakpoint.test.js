@@ -41,6 +41,13 @@ describe('Breakpoint Component', () => {
       expect(renderMethod).toBeCalled();
       expect(renderMethod).toBeCalledWith('mobile');
     });
+
+    it('handles if no render props provided at all', () => {
+      setMatchMediaMock(320);
+      expect(() => {
+        renderer.create(<Breakpoint />);
+      }).not.toThrow();
+    });
   });
 
   it('listens to breakpoint changes', () => {
