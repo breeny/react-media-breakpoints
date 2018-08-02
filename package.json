@@ -1,12 +1,21 @@
 {
   "name": "react-media-breakpoints",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
   "main": "index.js",
   "module": "es/index.js",
   "repository": "https://github.com/breeny/react-media-breakpoints.git",
   "author": "Andrew Breen (Twitter: @breeny92)",
   "license": "MIT",
+  "keywords": [
+    "reactjs",
+    "withMedia",
+    "breakpoints",
+    "responsive",
+    "react",
+    "es6",
+    "javascript"
+  ],
   "devDependencies": {
     "babel-jest": "^23.4.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -18,7 +27,8 @@
     "match-media-mock": "^0.1.0",
     "nwb": "^0.21.5",
     "react": "^16.4.1",
-    "react-test-renderer": "^16.4.1"
+    "react-test-renderer": "^16.4.1",
+    "release-it": "^7.4.8"
   },
   "peerDependencies": {
     "react": "^16.4.1"
@@ -26,12 +36,16 @@
   "scripts": {
     "build": "nwb build",
     "test": "jest",
-    "test-ci": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "test-ci": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "release": "release-it"
   },
   "jest": {
     "testURL": "http://localhost",
     "collectCoverageFrom": [
       "src/**/*.{js|jsx}"
     ]
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2"
   }
 }

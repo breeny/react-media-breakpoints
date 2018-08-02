@@ -1,15 +1,33 @@
 import React from 'react';
 import breakpoints from './breakpoints';
+import PropTypes from 'prop-types';
 
 class Breakpoint extends React.Component {
 
+  static propTypes = {
+    render: PropTypes.func,
+    children: PropTypes.func,
+    query: PropTypes.string,
+  }
+
   state = {
-    breakpoint: breakpoints.getBreakpoints()[0]
+    breakpoint: null,
   }
 
   componentDidMount() {
     this.queries = [];
-    breakpoints.getBreakpoints().forEach(breakpoint => {
+    let _breakpoints = [];
+    const { query } = this.props;
+    if (query) {
+      _breakpoints = [{
+        name: '',
+        query
+      }]
+    } else {
+      _breakpoints = breakpoints.getBreakpoints();
+    }
+
+    _breakpoints.forEach(breakpoint => {
       const mq = window.matchMedia(breakpoint.query);
 
       if (mq.matches) {
@@ -43,16 +61,18 @@ class Breakpoint extends React.Component {
 
   render() {
     const { breakpoint } = this.state;
-    if (this.props[breakpoint.name]) {
-      return this.props[breakpoint.name]();
-    }
-    
-    if (this.props.render) {
-      return this.props.render(breakpoint.name);
-    }
-
-    if (this.props.children) {
-      return this.props.children(breakpoint.name);
+    if (breakpoint) {
+      if (breakpoint.name && this.props[breakpoint.name]) {
+        return this.props[breakpoint.name]();
+      }
+      
+      if (this.props.render) {
+        return this.props.render(breakpoint.name);
+      }
+  
+      if (this.props.children) {
+        return this.props.children(breakpoint.name);
+      }
     }
 
     return null;
