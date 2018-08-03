@@ -6,6 +6,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 import React from 'react';
 import breakpoints from './breakpoints';
+import PropTypes from 'prop-types';
 
 var Breakpoint = function (_React$Component) {
   _inherits(Breakpoint, _React$Component);
@@ -20,7 +21,7 @@ var Breakpoint = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
-      breakpoint: breakpoints.getBreakpoints()[0]
+      breakpoint: null
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -28,7 +29,19 @@ var Breakpoint = function (_React$Component) {
     var _this2 = this;
 
     this.queries = [];
-    breakpoints.getBreakpoints().forEach(function (breakpoint) {
+    var _breakpoints = [];
+    var query = this.props.query;
+
+    if (query) {
+      _breakpoints = [{
+        name: '',
+        query: query
+      }];
+    } else {
+      _breakpoints = breakpoints.getBreakpoints();
+    }
+
+    _breakpoints.forEach(function (breakpoint) {
       var mq = window.matchMedia(breakpoint.query);
 
       if (mq.matches) {
@@ -63,16 +76,18 @@ var Breakpoint = function (_React$Component) {
   Breakpoint.prototype.render = function render() {
     var breakpoint = this.state.breakpoint;
 
-    if (this.props[breakpoint.name]) {
-      return this.props[breakpoint.name]();
-    }
+    if (breakpoint) {
+      if (breakpoint.name && this.props[breakpoint.name]) {
+        return this.props[breakpoint.name]();
+      }
 
-    if (this.props.render) {
-      return this.props.render(breakpoint.name);
-    }
+      if (this.props.render) {
+        return this.props.render(breakpoint.name);
+      }
 
-    if (this.props.children) {
-      return this.props.children(breakpoint.name);
+      if (this.props.children) {
+        return this.props.children(breakpoint.name);
+      }
     }
 
     return null;
@@ -80,5 +95,12 @@ var Breakpoint = function (_React$Component) {
 
   return Breakpoint;
 }(React.Component);
+
+Breakpoint.propTypes = process.env.NODE_ENV !== "production" ? {
+  render: PropTypes.func,
+  children: PropTypes.func,
+  query: PropTypes.string
+} : {};
+
 
 export default Breakpoint;
