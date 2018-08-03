@@ -1,6 +1,6 @@
 {
   "name": "react-media-breakpoints",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
   "main": "index.js",
   "module": "es/index.js",
