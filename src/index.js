@@ -1,11 +1,9 @@
+import Breakpoint from './Breakpoint';
 import breakpoints from './breakpoints';
 
 const configure = (newBreakpoints) => {
   breakpoints.configureBreakpoints(newBreakpoints);
 }
 
-export { default } from './Breakpoint';
+export { Breakpoint, configure };
 
-export {
-  configure
-}
