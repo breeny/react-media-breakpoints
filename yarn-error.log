@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn test
+  /usr/local/bin/node /usr/local/bin/yarn release
 
 PATH: 
   /Users/andrew/.rvm/gems/ruby-2.3.3/bin:/Users/andrew/.rvm/gems/ruby-2.3.3@global/bin:/Users/andrew/.rvm/rubies/ruby-2.3.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/andrew/.rvm/gems/ruby-2.3.3/bin:/Users/andrew/.rvm/gems/ruby-2.3.3@global/bin:/Users/andrew/.rvm/rubies/ruby-2.3.3/bin:/Users/andrew/.rvm/bin:/Users/andrew/.rvm/bin
@@ -8,7 +8,7 @@ Yarn version:
   1.5.1
 
 Node version: 
-  7.4.0
+  10.8.0
 
 Platform: 
   darwin x64
@@ -16,9 +16,9 @@ Platform:
 npm manifest: 
   {
     "name": "react-media-breakpoints",
-    "version": "0.2.2",
+    "version": "0.3.2",
     "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
-    "main": "index.js",
+    "main": "umd/react-media-breakpoints.js",
     "module": "es/index.js",
     "repository": "https://github.com/breeny/react-media-breakpoints.git",
     "author": "Andrew Breen (Twitter: @breeny92)",
@@ -44,7 +44,7 @@ npm manifest:
       "nwb": "^0.21.5",
       "react": "^16.4.1",
       "react-test-renderer": "^16.4.1",
-      "release-it": "^7.4.8"
+      "release-it": "^7.5.0-beta.0"
     },
     "peerDependencies": {
       "react": "^16.4.1"
@@ -8101,9 +8101,9 @@ Lockfile:
     version "0.2.7"
     resolved "https://registry.npmjs.org/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   
-  release-it@^7.4.8:
-    version "7.4.8"
-    resolved "https://registry.npmjs.org/release-it/-/release-it-7.4.8.tgz#2b5d8b89c17b4690934d671849643893129d146d"
+  release-it@^7.5.0-beta.0:
+    version "7.5.0-beta.0"
+    resolved "https://registry.yarnpkg.com/release-it/-/release-it-7.5.0-beta.0.tgz#491a8cc89ac03fb68a4cfde79462aa58e942ec79"
     dependencies:
       "@octokit/rest" "15.9.4"
       async-retry "1.2.1"
@@ -10067,14 +10067,13 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c jest
+  Arguments: -c release-it
   Directory: /Users/andrew/Development/react-media-breakpoints
   Output:
   
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
       at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
       at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:106:13)
-      at ChildProcess.emit (events.js:191:7)
-      at maybeClose (internal/child_process.js:885:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+      at ChildProcess.emit (events.js:182:13)
+      at maybeClose (internal/child_process.js:962:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:249:5)
