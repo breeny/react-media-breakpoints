@@ -1,5 +1,5 @@
 /*!
- * react-media-breakpoints v0.2.2
+ * react-media-breakpoints v0.3.4
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -79,62 +79,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__defaultBreakpoints__ = __webpack_require__(7);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var Breakpoints = function () {
-  function Breakpoints() {
-    _classCallCheck(this, Breakpoints);
-
-    this.generateMediaQueries(__WEBPACK_IMPORTED_MODULE_0__defaultBreakpoints__["a" /* default */]);
-  }
-
-  Breakpoints.prototype.generateMediaQueries = function generateMediaQueries(breakpoints) {
-    var queries = breakpoints.map(function (breakpoint) {
-
-      var query = '';
-      if (breakpoint.minWidth) {
-        query += '(min-width: ' + breakpoint.minWidth + 'px)';
-      }
-
-      if (query && breakpoint.maxWidth) {
-        query += ' and ';
-      }
-
-      if (breakpoint.maxWidth) {
-        query += '(max-width: ' + breakpoint.maxWidth + 'px)';
-      }
-
-      return {
-        name: breakpoint.name,
-        query: query
-      };
-    });
-
-    this.breakpoints = queries;
-  };
-
-  Breakpoints.prototype.configureBreakpoints = function configureBreakpoints(breakpoints) {
-    this.generateMediaQueries(breakpoints);
-  };
-
-  Breakpoints.prototype.getBreakpoints = function getBreakpoints() {
-    return this.breakpoints;
-  };
-
-  return Breakpoints;
-}();
-
-var breakpoints = new Breakpoints();
-/* harmony default export */ __webpack_exports__["a"] = (breakpoints);
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -231,7 +175,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -273,7 +217,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -289,7 +233,7 @@ module.exports = emptyFunction;
 var printWarning = function() {};
 
 if (true) {
-  var ReactPropTypesSecret = __webpack_require__(4);
+  var ReactPropTypesSecret = __webpack_require__(3);
   var loggedTypeFailures = {};
 
   printWarning = function(text) {
@@ -371,7 +315,7 @@ module.exports = checkPropTypes;
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -390,6 +334,62 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__defaultBreakpoints__ = __webpack_require__(13);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Breakpoints = function () {
+  function Breakpoints() {
+    _classCallCheck(this, Breakpoints);
+
+    this.generateMediaQueries(__WEBPACK_IMPORTED_MODULE_0__defaultBreakpoints__["a" /* default */]);
+  }
+
+  Breakpoints.prototype.generateMediaQueries = function generateMediaQueries(breakpoints) {
+    var queries = breakpoints.map(function (breakpoint) {
+
+      var query = '';
+      if (breakpoint.minWidth) {
+        query += '(min-width: ' + breakpoint.minWidth + 'px)';
+      }
+
+      if (query && breakpoint.maxWidth) {
+        query += ' and ';
+      }
+
+      if (breakpoint.maxWidth) {
+        query += '(max-width: ' + breakpoint.maxWidth + 'px)';
+      }
+
+      return {
+        name: breakpoint.name,
+        query: query
+      };
+    });
+
+    this.breakpoints = queries;
+  };
+
+  Breakpoints.prototype.configureBreakpoints = function configureBreakpoints(breakpoints) {
+    this.generateMediaQueries(breakpoints);
+  };
+
+  Breakpoints.prototype.getBreakpoints = function getBreakpoints() {
+    return this.breakpoints;
+  };
+
+  return Breakpoints;
+}();
+
+var breakpoints = new Breakpoints();
+/* harmony default export */ __webpack_exports__["a"] = (breakpoints);
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -403,16 +403,15 @@ module.exports = __webpack_require__(6);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configure", function() { return configure; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__breakpoints__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Breakpoint__ = __webpack_require__(8);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return __WEBPACK_IMPORTED_MODULE_1__Breakpoint__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Breakpoint__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__breakpoints__ = __webpack_require__(4);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Breakpoint", function() { return __WEBPACK_IMPORTED_MODULE_0__Breakpoint__["a"]; });
+
 
 
 var configure = function configure(newBreakpoints) {
-  __WEBPACK_IMPORTED_MODULE_0__breakpoints__["a" /* default */].configureBreakpoints(newBreakpoints);
+  __WEBPACK_IMPORTED_MODULE_1__breakpoints__["a" /* default */].configureBreakpoints(newBreakpoints);
 };
-
-
 
 
 
@@ -421,26 +420,9 @@ var configure = function configure(newBreakpoints) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ([{
-  "name": "mobile",
-  "maxWidth": 767
-}, {
-  "name": "tablet",
-  "minWidth": 768,
-  "maxWidth": 1023
-}, {
-  "name": "desktop",
-  "minWidth": 1024
-}]);
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__breakpoints__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__breakpoints__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 var _class, _temp2;
@@ -551,7 +533,7 @@ var Breakpoint = (_temp2 = _class = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Breakpoint);
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -560,12 +542,12 @@ var Breakpoint = (_temp2 = _class = function (_React$Component) {
 if (false) {
   module.exports = require('./cjs/react.production.min.js');
 } else {
-  module.exports = __webpack_require__(10);
+  module.exports = __webpack_require__(9);
 }
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -586,12 +568,12 @@ if (true) {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(1);
-var invariant = __webpack_require__(11);
-var emptyObject = __webpack_require__(12);
-var warning = __webpack_require__(13);
-var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(3);
+var _assign = __webpack_require__(0);
+var invariant = __webpack_require__(10);
+var emptyObject = __webpack_require__(11);
+var warning = __webpack_require__(12);
+var emptyFunction = __webpack_require__(1);
+var checkPropTypes = __webpack_require__(2);
 
 // TODO: this is special because it gets imported during build.
 
@@ -2058,7 +2040,7 @@ module.exports = react;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2117,7 +2099,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2140,7 +2122,7 @@ if (true) {
 module.exports = emptyObject;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2154,7 +2136,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(1);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -2208,6 +2190,23 @@ if (true) {
 module.exports = warning;
 
 /***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ([{
+  "name": "mobile",
+  "maxWidth": 767
+}, {
+  "name": "tablet",
+  "minWidth": 768,
+  "maxWidth": 1023
+}, {
+  "name": "desktop",
+  "minWidth": 1024
+}]);
+
+/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2255,10 +2254,10 @@ if (true) {
 
 
 
-var assign = __webpack_require__(1);
+var assign = __webpack_require__(0);
 
-var ReactPropTypesSecret = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(3);
+var checkPropTypes = __webpack_require__(2);
 
 var printWarning = function() {};
 
