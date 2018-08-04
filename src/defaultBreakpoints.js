@@ -1,4 +1,4 @@
-[
+export default [
   {
     "name": "mobile",
     "maxWidth": 767 
@@ -12,4 +12,4 @@
     "name": "desktop",
     "minWidth": 1024
   }
-]
+];

@@ -1,4 +1,4 @@
-import defaultBreakpoints from './default_breakpoints.json';
+import defaultBreakpoints from './defaultBreakpoints';
 
 class Breakpoints {
 

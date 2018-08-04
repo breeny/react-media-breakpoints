@@ -1,7 +1,7 @@
 module.exports = {
   type: 'react-component',
   npm: {
-    umd: false,
+    umd: 'react-media-breakpoints',
     cjs: false
   }
 }

@@ -1,0 +1,11 @@
+export default [{
+  "name": "mobile",
+  "maxWidth": 767
+}, {
+  "name": "tablet",
+  "minWidth": 768,
+  "maxWidth": 1023
+}, {
+  "name": "desktop",
+  "minWidth": 1024
+}];

@@ -1,6 +1,6 @@
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-import defaultBreakpoints from './default_breakpoints.json';
+import defaultBreakpoints from './defaultBreakpoints';
 
 var Breakpoints = function () {
   function Breakpoints() {
