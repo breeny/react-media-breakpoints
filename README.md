@@ -108,6 +108,19 @@ import Breakpoint from 'react-media-breakpoints';
 </Breakpoint>
 ```
 
+### Server Side Rendering
+Using this package in a server context will result in a default breakpoint, `server`, to be rendered. This allows you to specify the most expensive breakpoint to pre-render (e.g. the most amount of API calls).
+
+```javascript
+//On a server
+import Breakpoint from 'react-media-breakpoints';
+import MyCoolServerComponent from './Component';
+
+<Breakpoint server={() => { /* Render a component here */ }} />
+<Breakpoint server={MyCoolServerComponent} />
+```
+
+
 ### Common Gotchas & FAQs
 
 *Custom config overlaps/misses pixel ranges*
