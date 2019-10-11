@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Breakpoint from '../src/Breakpoint';
+import Breakpoint from '../../src/Breakpoint';
 import matchMediaMock from 'match-media-mock';
 
 describe('Breakpoint Component', () => {

@@ -1,4 +1,4 @@
-import breakpoints from '../src/breakpoints';
+import breakpoints from '../../src/breakpoints';
 
 describe('breakpoints configuration', () => {
   it('can be configured', () => {
