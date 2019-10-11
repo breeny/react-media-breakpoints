@@ -27,30 +27,38 @@ class Breakpoint extends React.Component {
       _breakpoints = breakpoints.getBreakpoints();
     }
 
-    _breakpoints.forEach(breakpoint => {
-      const mq = window.matchMedia(breakpoint.query);
-
-      if (mq.matches) {
-        this.setState({
-          breakpoint
-        });
-      }
-
-      const listener = (mql) => {
-        if (mql.matches) {
+    if (global.window) {
+      _breakpoints.forEach(breakpoint => {
+        const mq = window.matchMedia(breakpoint.query);
+  
+        if (mq.matches) {
           this.setState({
             breakpoint
-          })
+          });
         }
-      }
-
-      mq.addListener(listener);
-
-      this.queries.push({
-        query: mq,
-        listener,
-      })
-    });
+  
+        const listener = (mql) => {
+          if (mql.matches) {
+            this.setState({
+              breakpoint
+            })
+          }
+        }
+  
+        mq.addListener(listener);
+  
+        this.queries.push({
+          query: mq,
+          listener,
+        })
+      });
+    } else {
+      this.setState({
+        breakpoint: {
+          name: 'server'
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -61,6 +69,7 @@ class Breakpoint extends React.Component {
 
   render() {
     const { breakpoint } = this.state;
+
     if (breakpoint) {
       if (breakpoint.name && this.props[breakpoint.name]) {
         return this.props[breakpoint.name]();
