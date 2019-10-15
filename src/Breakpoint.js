@@ -1,5 +1,5 @@
 import React from 'react';
-import breakpoints from './breakpoints';
+import listeners from './listener';
 import PropTypes from 'prop-types';
 
 class Breakpoint extends React.Component {
@@ -14,57 +14,22 @@ class Breakpoint extends React.Component {
     breakpoint: null,
   }
 
-  componentDidMount() {
-    this.queries = [];
-    let _breakpoints = [];
-    const { query } = this.props;
-    if (query) {
-      _breakpoints = [{
-        name: '',
-        query
-      }]
-    } else {
-      _breakpoints = breakpoints.getBreakpoints();
-    }
+  constructor() {
+    super();
+    this.factory = listeners();
+  }
 
-    if (global.window) {
-      _breakpoints.forEach(breakpoint => {
-        const mq = window.matchMedia(breakpoint.query);
-  
-        if (mq.matches) {
-          this.setState({
-            breakpoint
-          });
-        }
-  
-        const listener = (mql) => {
-          if (mql.matches) {
-            this.setState({
-              breakpoint
-            })
-          }
-        }
-  
-        mq.addListener(listener);
-  
-        this.queries.push({
-          query: mq,
-          listener,
-        })
-      });
-    } else {
-      this.setState({
-        breakpoint: {
-          name: 'server'
-        }
-      });
-    }
+  onBreakpointChange = (breakpoint) => {
+    this.setState({ breakpoint });
+  }
+
+  componentDidMount() {
+    const { query } = this.props;
+    this.factory.createListeners(this.onBreakpointChange, query); 
   }
 
   componentWillUnmount() {
-    this.queries.forEach(bp => {
-      bp.query.removeListener(bp.listener);
-    })
+    this.factory.disposeListeners();
   }
 
   render() {
