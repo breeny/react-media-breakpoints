@@ -1,6 +1,6 @@
 {
   "name": "react-media-breakpoints",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
   "main": "umd/react-media-breakpoints.js",
   "module": "es/index.js",
@@ -47,12 +47,16 @@
       {
         "displayName": "browser",
         "testURL": "http://localhost",
-        "testMatch": ["<rootDir>/**/browser/**/*.test.js"],
+        "testMatch": [
+          "<rootDir>/**/browser/**/*.test.js"
+        ],
         "testEnvironment": "jsdom"
       },
       {
         "displayName": "server",
-        "testMatch": ["<rootDir>/**/server/**/*.test.js"],
+        "testMatch": [
+          "<rootDir>/**/server/**/*.test.js"
+        ],
         "testEnvironment": "node"
       }
     ]
