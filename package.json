@@ -1,6 +1,6 @@
 {
   "name": "react-media-breakpoints",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
   "main": "dist/index.js",
   "repository": "https://github.com/breeny/react-media-breakpoints.git",
