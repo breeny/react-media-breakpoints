@@ -52,12 +52,6 @@ class Breakpoint extends React.Component {
           listener,
         })
       });
-    } else {
-      this.setState({
-        breakpoint: {
-          name: 'server'
-        }
-      });
     }
   }
 
@@ -68,7 +62,13 @@ class Breakpoint extends React.Component {
   }
 
   render() {
-    const { breakpoint } = this.state;
+    let { breakpoint } = this.state;
+
+    if (!breakpoint && !global.window) {
+      breakpoint = {
+        name: 'server'
+      };
+    }
 
     if (breakpoint) {
       if (breakpoint.name && this.props[breakpoint.name]) {
@@ -83,6 +83,7 @@ class Breakpoint extends React.Component {
         return this.props.children(breakpoint.name);
       }
     }
+
 
     return null;
   }
