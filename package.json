@@ -2,8 +2,7 @@
   "name": "react-media-breakpoints",
   "version": "0.4.2",
   "description": "Simple and configurable breakpoint matcher using matchMedia and render props",
-  "main": "es/index.js",
-  "module": "es/index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/breeny/react-media-breakpoints.git",
   "author": "Andrew Breen (Twitter: @breeny92)",
   "license": "MIT",
@@ -17,8 +16,15 @@
     "javascript"
   ],
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "@types/jest": "^24.0.18",
+    "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.2",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -26,15 +32,17 @@
     "coveralls": "^3.0.2",
     "jest": "^23.4.2",
     "match-media-mock": "^0.1.1",
-    "nwb": "^0.23.0",
     "react": "^16.4.1",
-    "react-test-renderer": "^16.4.1"
+    "react-test-renderer": "^16.4.1",
+    "rollup": "^1.25.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "peerDependencies": {
     "react": "^16.4.1"
   },
   "scripts": {
-    "build": "nwb build",
+    "build": "rollup -c -o dist/index.js",
     "test": "jest",
     "test-ci": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "release": "release-it"
