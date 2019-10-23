@@ -41,30 +41,32 @@ var Breakpoint = function (_React$Component) {
       _breakpoints = breakpoints.getBreakpoints();
     }
 
-    _breakpoints.forEach(function (breakpoint) {
-      var mq = window.matchMedia(breakpoint.query);
+    if (global.window) {
+      _breakpoints.forEach(function (breakpoint) {
+        var mq = window.matchMedia(breakpoint.query);
 
-      if (mq.matches) {
-        _this2.setState({
-          breakpoint: breakpoint
-        });
-      }
-
-      var listener = function listener(mql) {
-        if (mql.matches) {
+        if (mq.matches) {
           _this2.setState({
             breakpoint: breakpoint
           });
         }
-      };
 
-      mq.addListener(listener);
+        var listener = function listener(mql) {
+          if (mql.matches) {
+            _this2.setState({
+              breakpoint: breakpoint
+            });
+          }
+        };
 
-      _this2.queries.push({
-        query: mq,
-        listener: listener
+        mq.addListener(listener);
+
+        _this2.queries.push({
+          query: mq,
+          listener: listener
+        });
       });
-    });
+    }
   };
 
   Breakpoint.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -75,6 +77,13 @@ var Breakpoint = function (_React$Component) {
 
   Breakpoint.prototype.render = function render() {
     var breakpoint = this.state.breakpoint;
+
+
+    if (!breakpoint && !global.window) {
+      breakpoint = {
+        name: 'server'
+      };
+    }
 
     if (breakpoint) {
       if (breakpoint.name && this.props[breakpoint.name]) {
